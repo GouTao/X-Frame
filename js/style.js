@@ -80,16 +80,16 @@ var basic=(function layStyle(){
 		targPage.css("display","block");
 		$mask.css("display","block");
 		tempPage.addClass("pageChange-half pageOut-half");
-		if(targPage.find("[data-role='nav']")[0]!=undefined){
-			targPage.find("[data-role='nav']").children("li").each(function(){
-				$(this).removeClass('active');
-			})
-			targPage.find("[data-role='nav']").children("li:first-child").addClass('active');
-			targPage.find("[data-role='page-mode']").each(function(){
-				$(this).removeClass('active');
-			})
-			targPage.find("[data-role='page-mode']:first-child").addClass('active');
-		}
+//		if(targPage.find("[data-role='nav']")[0]!=undefined){
+//			targPage.find("[data-role='nav']").children("li").each(function(){
+//				$(this).removeClass('active');
+//			})
+//			targPage.find("[data-role='nav']").children("li:first-child").addClass('active');
+//			targPage.find("[data-role='page-mode']").each(function(){
+//				$(this).removeClass('active');
+//			})
+//			targPage.find("[data-role='page-mode']:first-child").addClass('active');
+//		}
 		targPage.addClass("pageChange pageOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 			if($(e.target).attr("data-role")=="page"){
 				targPage.removeClass("pageChange pageOut");
@@ -187,14 +187,21 @@ var basic=(function layStyle(){
 				return;
 			}
 			else{
-				$(this).parent().children('li').each(function(){
-					$(this).removeClass('active');
-				})
-				$(this).addClass('active');
-				$(this).parents("[data-role='page']").find("[data-role='content']").children("[data-role='page-mode']").each(function(){
-					$(this).removeClass('active  animated fadeIn');
-				})
-				$("[mode='"+$(this).attr("mode-target")+"']").addClass('active animated fadeIn');
+				
+				
+				if($("[mode='"+$(this).attr("mode-target")+"']")[0]!=undefined){
+					$(this).parent().children('li').each(function(){
+						$(this).removeClass('active');
+					})
+					$(this).addClass('active');
+				
+					$(this).parents("[data-role='page']").find("[data-role='content']").children("[data-role='page-mode']").each(function(){
+						$(this).removeClass('active  animated fadeIn');
+					})
+					$("[mode='"+$(this).attr("mode-target")+"']").addClass('active animated fadeIn');
+					
+				}
+				
 			}
 		})
 	})
