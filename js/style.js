@@ -35,6 +35,13 @@ var basic=(function layStyle(){
 	})
 	
 	layStyle.to=function(pageID){
+		if($("#"+pageID).attr("inited")==undefined){
+			$("#"+pageID).trigger("init");
+			$("#"+pageID).attr("inited","ture")
+		}
+		else{
+			$("#"+pageID).trigger("show");
+		}
 		pageRoute.push(tempPage);
 		$("[data-role='page']").css("z-index","1");
 		$("#"+pageID).css("z-index","100");
@@ -55,6 +62,7 @@ var basic=(function layStyle(){
 				$(this).removeClass('active');
 			})
 			$("#"+pageID).find("[data-role='page-mode']:first-child").addClass('active');
+			$("#"+pageID).trigger("show");
 		}
 		
 		$("#"+pageID).addClass("pageChange pageIn").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
@@ -65,6 +73,7 @@ var basic=(function layStyle(){
 				$("#"+pageID).children("[data-role='footer']").css('position','fixed');
 				$mask.css("display","none")
 				tempPage.css('display','none');
+				tempPage.trigger("hide");
 				tempPage=$("#"+pageID);
 			}
 		});
@@ -99,6 +108,7 @@ var basic=(function layStyle(){
 				$mask.css("display","none")
 				tempPage.css('display','none');
 				pageRoute.splice(pageRoute.length-1,1);
+				tempPage.trigger("hide");
 				tempPage=targPage;
 			}
 		});
