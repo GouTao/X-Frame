@@ -37,19 +37,32 @@
 				</div>
 				<div data-role="page-mode" mode="pm2">
 					<h4>PAGE MODULE TOW</h4>
-					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page2">GO TO</button>
+					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page2">GO TO P2</button>
 				</div>
 				<div data-role="page-mode" mode="pm3">
 					<h4>PAGE MODULE THREE</h4>
-					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page3">GO TO</button>
+					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page3">GO TO P3</button>
 				</div>
 			</div>
 			<div data-role="footer">
 				<ul data-role="nav">
-					<li class="active" mode-target="pm1"><span class="glyphicon glyphicon-home"></span></li>
-					<li mode-target="pm2"><span class="glyphicon glyphicon-search"></span></li>
-					<li mode-target="pm3"><span class="glyphicon glyphicon-shopping-cart"></span></li>
-					<li data-role="page-lead" data-target="page3"><span class="glyphicon glyphicon-user"></span></li>
+					<li class="active" mode-target="pm1">
+						<!--<span class="glyphicon glyphicon-home"></span>-->
+						<label>无logo</label>
+					</li>
+					<li mode-target="pm2">
+						<span >
+							<img src="bootstrap-3.3.5-dist/favicon.ico"/>
+						</span>
+						<label>自定义logo</label>
+					</li>
+					<li mode-target="pm3">
+						<span class="glyphicon glyphicon-user"></span>
+						<label>字体logo</label>
+					</li>
+					<li data-role="page-lead" data-target="page3">
+						<span class="glyphicon glyphicon-hand-right"></span>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -111,9 +124,12 @@
 			</div>
 			<div data-role="footer">
 				<ul data-role="nav">
-					<li class="active" mode-target="pm1"><span class="glyphicon glyphicon-home"></span></li>
-					<li mode-target="pm2"><span class="glyphicon glyphicon-search"></span></li>
-					<li mode-target="pm3"><span class="glyphicon glyphicon-shopping-cart"></span></li>
+					<li class="active" mode-target="pm1">
+						<span class="glyphicon glyphicon-camera"></span>
+						<label>测试</label>
+					</li>
+					<li mode-target="pm2"><span class="glyphicon glyphicon-hd-video"></span></li>
+					<li mode-target="pm3"><span class="glyphicon glyphicon-leaf"></span></li>
 				</ul>
 			</div>
 		</div>

@@ -164,6 +164,24 @@ var basic=(function layStyle(){
 	})
 	
 	$("[data-role='nav'] li").each(function(){
+		if($(this).find('span')[0]==undefined){
+			$(this).find('label').css({
+				"margin-top":"0px",
+				"line-height":"50px",
+				"line-hight":"50px",
+				"font-size": "0.8em"
+			})
+		}
+		
+		if($(this).find('label')[0]==undefined){
+			$(this).find('span').css({
+				"margin-top":"0px",
+				"line-height":"50px",
+				"line-hight":"50px",
+				"font-size": "1em"
+			})
+		}
+		
 		$(this).on("mouseup",function(e){
 			if($(this).hasClass('active')){
 				return;
@@ -175,7 +193,6 @@ var basic=(function layStyle(){
 				$(this).addClass('active');
 				$(this).parents("[data-role='page']").find("[data-role='content']").children("[data-role='page-mode']").each(function(){
 					$(this).removeClass('active  animated fadeIn');
-					//$(this).css('display','none');
 				})
 				$("[mode='"+$(this).attr("mode-target")+"']").addClass('active animated fadeIn');
 			}
@@ -201,6 +218,5 @@ var basic=(function layStyle(){
 			"overflow-y": "auto"
 		});
 	}
-	
 	return layStyle
 })()

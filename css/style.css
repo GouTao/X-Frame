@@ -121,12 +121,29 @@ body{
 	margin: 0;
 	text-align: center;
 	height: 100%;
-	padding-top: 16px;
+	height: 50px;
 }
-[data-role="nav"] li.active span{
+[data-role="nav"] li span{
+	display: block;
+	height: 35px;
+	line-height: 35px;
+}
+[data-role="nav"] li span img{
+	width: 17px;
+	margin-top: 10px;
+}
+[data-role="nav"] li label{
+	display: block;
+	margin: auto;
+	margin-top: -2px;
+	text-align: center;
+	line-height: 10px;
+	font-size: 0.6em;
+}
+[data-role="nav"] li.active{
 	color: rgb(230,107,20);
+	opacity: 0.7;
 }
-
 [data-role="page-mode"]{
 	display: none;
 }
