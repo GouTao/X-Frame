@@ -1,142 +1,16 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-		<title>X-Frame</title>
-		<!-- main css -->
+		<title></title>
 		<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/style.css" />
-		<style>
-			.leadBtn{
-				width: 50%;
-				margin: auto;
-			}
-		</style>
+		<link rel="stylesheet" href="css/Xframe.css" />
 	</head>
 	<body>
-		<div data-role="page" id="page1">
-			<div data-role="header">
-				<h4>TEST PAGE 1</h4>
-				<button class="btn btn-default btn-head-right" data-role="slide-lead" data-target="sb1">
-					<span class="glyphicon glyphicon-cog"></span> 
-				</button>
-			</div>
-			<div data-role="content">
-				<div data-role="page-mode" mode="pm1" class="active">
-					<h4>PAGE MODULE ONE</h4>
-					<hr />
-					<p>star</p>
-					<p>testfhdsjklafhkldsajfklasdjfklasjfkla</p>
-					<p>tefdasfjkladfjklasfjl;kst</p><p>test</p>
-					<p>test</p><p>test</p><p>test</p><p>test</p>
-					<p>test</p><p>test</p><p>test</p>
-					<p>test</p><p>test</p><p>test</p>
-					<p>test</p><p>test</p><p>test</p>
-					<p>test</p><p>test</p><p>test</p>
-					<p>test</p><p>test</p><p>end</p>
-				</div>
-				<div data-role="page-mode" mode="pm2">
-					<h4>PAGE MODULE TOW</h4>
-					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page2">GO TO P2</button>
-				</div>
-				<div data-role="page-mode" mode="pm3">
-					<h4>PAGE MODULE THREE</h4>
-					<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page3">GO TO P3</button>
-				</div>
-			</div>
-			<div data-role="footer">
-				<ul data-role="nav">
-					<li class="active" mode-target="pm1">
-						<!--<span class="glyphicon glyphicon-home"></span>-->
-						<label>无logo</label>
-					</li>
-					<li mode-target="pm2">
-						<span >
-							<img src="bootstrap-3.3.5-dist/favicon.ico"/>
-						</span>
-						<label>自定义logo</label>
-					</li>
-					<li mode-target="pm3">
-						<span class="glyphicon glyphicon-user"></span>
-						<label>字体logo</label>
-					</li>
-					<li data-role="page-lead" data-target="page3">
-						<span class="glyphicon glyphicon-hand-right"></span>
-					</li>
-				</ul>
-			</div>
-		</div>
 		
-		<div data-role = "slideBar" data-slideBar="sb1" style="background-color: #C0C0C0;color: #262626;">
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<p>test</p><p>test</p>
-			<button class="btn btn-default btn-block" data-role="slide-back">CLOSE</button>
-		</div>
-		
-		<div data-role="page" id="page2" >
-			<div data-role="header" >
-				<h4>TEST PAGE TWO</h4>
-				<button class="btn btn-default btn-head-right" data-role="slide-lead" data-target="sb1">
-					<span class="glyphicon glyphicon-cog"></span> 
-				</button>
-				<button class="btn btn-default btn-head-left" data-role="page-lead" data-target="back">
-					 <span class="glyphicon glyphicon-chevron-left"></span> 
-				</button>
-			</div>
-			<div data-role="content" >
-				<p>test</p><p>test</p>
-				<p>test</p><p>test</p>
-				<p>test</p><p>test</p>
-				<p>test</p><p>test</p>
-				<p>test</p><p>test</p>
-				<p>test</p><p>test</p>
-				<button class="btn btn-block btn-warning leadBtn" data-role="page-lead" data-target="page3">GO TO</button>
-			</div>
-		</div>
-		
-		<div data-role="page" id="page3">
-			<div data-role="header">
-				<h4>TEST PAGE THREE</h4>
-				<button class="btn btn-default btn-head-right" data-role="slide-lead" data-target="sb1">
-					<span class="glyphicon glyphicon-cog"></span> 
-				</button>
-				<button class="btn btn-default btn-head-left" data-role="page-lead" data-target="back">
-					 <span class="glyphicon glyphicon-chevron-left"></span> 
-				</button>
-			</div>
-			<div data-role="content">
-				<div data-role="page-mode" mode="pm1" class="active">
-					1
-				</div>
-				<div data-role="page-mode" mode="pm2" >
-					2
-				</div>
-				<div data-role="page-mode" mode="pm3" >
-					3
-				</div>
-			</div>
-			<div data-role="footer">
-				<ul data-role="nav">
-					<li class="active" mode-target="pm1">
-						<span class="glyphicon glyphicon-camera"></span>
-						<label>测试</label>
-					</li>
-					<li mode-target="pm2"><span class="glyphicon glyphicon-hd-video"></span></li>
-					<li mode-target="pm3"><span class="glyphicon glyphicon-leaf"></span></li>
-				</ul>
-			</div>
-		</div>
-		<!-- main js -->
 		<script type="text/javascript" src="bootstrap-3.3.5-dist/js/jquery.min.js" ></script>
 		<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js" ></script>
-		
-		<script type="text/javascript" src="js/style.js" ></script>
+		<script type="text/javascript" src="js/Xframe.js" ></script>
 	</body>
 </html>

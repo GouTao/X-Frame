@@ -52,6 +52,13 @@ body{
 	border-right: 1px solid #999999;
 	padding: 5px;
 }
+.VMcontent{
+	display: table;
+}
+.VMinner{
+	display: table-cell;
+	vertical-align: middle;
+}
 [data-role='content'].withHeader:before{
 	content: "";
 	height: 50px;
@@ -93,6 +100,10 @@ body{
 	margin: 0;
 	border-radius: 0;
 	font-size: 1.3em;
+	padding-top: 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 .btn-head-left{
 	width: 50px;
@@ -100,6 +111,10 @@ body{
 	float: left;
 	border-radius: 0;
 	font-size: 1.3em;
+	padding-top: 15px;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 [data-role="nav"]{
@@ -141,7 +156,7 @@ body{
 	font-size: 0.6em;
 }
 [data-role="nav"] li.active{
-	color: rgb(230,107,20);
+	color: #0099ff;
 	opacity: 0.7;
 }
 [data-role="page-mode"]{
@@ -215,8 +230,8 @@ body{
 	}
 }
 .pageChange{
-  -webkit-animation-duration: .5s;
-  animation-duration: .5s;
+  -webkit-animation-duration: .3s;
+  animation-duration: .3s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -370,4 +385,24 @@ body{
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+#loading{
+	background-color: rgba(0,0,0,0.1);
+	font-size: 2em;
+	text-align: center;
+	z-index: 10000;
+	color: #8C8C8C;
+	position: fixed;
+	/*margin-top: 100px;*/
+	display: table;
+}
+#loading div{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.btn-primary {
+  	color: #fff;
+  	background-color: #0099ff;
+  	border-color: #0088ff;
 }
