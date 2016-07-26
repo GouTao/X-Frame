@@ -45,12 +45,12 @@ body{
 	z-index: 1000;
 }
 [data-role="content"]{
-	background-color: rgb(245,245,245);
+	background-color: rgb(255,255,255);
 	overflow-x: hidden;
 	overflow-y: auto;
 	border-left: 1px solid #999999;
 	border-right: 1px solid #999999;
-	padding: 5px;
+	padding: 0px;
 }
 .VMcontent{
 	display: table;
@@ -164,6 +164,12 @@ body{
 }
 [data-role="page-mode"].active{
 	display: block;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+	height: 0;
 }
 /****************animate*******************/
 .slideChange{
@@ -356,8 +362,8 @@ body{
 }
 
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
