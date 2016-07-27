@@ -18,9 +18,15 @@ var $Xframe=(function layStyle(){
 			$mask.css("opacity","0");
 			$("[data-role='slideBar']").each(function(){
 				if($(this).css("z-index")=="10000"){
-					$(this).addClass("slideChange slideOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+					if($(this).attr("direction")=="left"){
+						$(this).addClass("slideChange leftSlideOut");	
+					}
+					else{
+						$(this).addClass("slideChange rightSlideOut");
+					}
+					$(this).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 						if($(e.target).attr("data-role")=="slideBar"){
-							$(this).removeClass("slideChange slideOut");
+							$(this).removeClass("slideChange leftSlideOut rightSlideOut");
 							$(this).css('display',"none");
 							$(this).css('z-index',"1");
 							$mask.css("display","none");
@@ -70,13 +76,52 @@ var $Xframe=(function layStyle(){
 			navLead($(this));
 		})
 		
+		$(".btn-head-right").each(function(){
+			btnHead($(this));
+		})
+		$(".btn-head-left").each(function(){
+			btnHead($(this));
+		})
+		
+		$(".head-search").each(function(){
+			headSearch($(this));
+		})
+		
 		$($("[data-role='page']")[0]).attr("inited","true").trigger("init");
 	})
+	//头部导航按钮
+	function btnHead($target){
+		if($target.children("label").length!=0){
+			$target.css("line-height","35px");
+		}
+	}
+	
+	//头部搜索
+	function headSearch($target){
+		var $delete = $("<span class='glyphicon glyphicon-remove-circle deletHeaderSearch'></span>");
+		$target.append($delete);
+		$delete.css("opacity","0");
+		$target.children("input").each(function(){
+			$(this).unbind("focusin").on("focusin",function(){
+				$(this).next("span").css("opacity","1");
+			});
+			$(this).unbind("focusout").on("focusout",function(){
+				$(this).next("span").css("opacity","0");
+			})
+		})
+		$target.children(".deletHeaderSearch").each(function(){
+			$(this).unbind("click").on("click",function(){
+				$(this).prev("input").val("");
+			})
+		})
+	}
 	
 	//布局
 	function layout(){
 		$("body").css("width",$(window).width());
 		$("[data-role='header']").children("h4").css("width",$(window).width()-120);
+		$("[data-role='header']").children(".head-search").css("width",$(window).width()-120);
+		$(".head-search").children("input").css("width",$(window).width()-150);
 		$("[data-role='content']").css("height",$(window).height());
 		$mask.css({
 			"width":"100%",
@@ -121,7 +166,17 @@ var $Xframe=(function layStyle(){
 	//调出边侧栏
 	function slideLead($target){
 		$target.unbind("mouseup").on("mouseup",function(e){
-			layStyle.slideBarIn($(this).attr("data-target"));
+			if($(this).attr("data-direction")){
+				if($(this).attr("data-direction")!="left"){
+					layStyle.slideBarIn($(this).attr("data-target"),"right");
+				}
+				else{
+					layStyle.slideBarIn($(this).attr("data-target"),"left");
+				}
+			}
+			else{
+				layStyle.slideBarIn($(this).attr("data-target"),"left");
+			}
 		})
 	}
 	
@@ -168,8 +223,11 @@ var $Xframe=(function layStyle(){
 					})
 					$(this).addClass('active');
 					var mode=$(this).attr("mode-target");
-					$(this).parents("[data-role='page']").find("[data-role='content']").children("[data-role='page-mode']").each(function(){
+					$(this).parents("[data-role='page']").find("[data-role='content']").find("[data-role='page-mode']").each(function(){
 						if($(this).attr("mode")==mode){
+							if($(this).attr("mode-name")!=""){
+								$(this).parents("[data-role='page']").find("[data-role='header'] h4").html($(this).attr("mode-name"))
+							}
 							$(this).addClass('active animated fadeIn');
 						}
 						else{
@@ -296,17 +354,27 @@ var $Xframe=(function layStyle(){
 		});
 	}
 	//边侧栏出现
-	layStyle.slideBarIn=function(slideID){
+	layStyle.slideBarIn=function(slideID,direction){
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$(this).css('display',"block");
 				$(this).css('z-index',"10000");
 				$mask.css("display","block");
 				$mask.css("opacity","1");
-				$(this).addClass("slideChange slideIn").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+				if(direction=="left"){
+					$(this).addClass("slideChange leftSlideIn");
+					$(this).attr("direction","left");
+				}
+				else{
+					$(this).addClass("slideChange rightSlideIn");
+					$(this).attr("direction","right");
+				}
+				$(this).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 					if($(e.target).attr("data-role")=="slideBar"){
-						$(this).removeClass("slideChange slideIn");
-						$(this).css("right","0");
+						$(this).removeClass("slideChange leftSlideIn rightSlideIn");
+						if($(this).attr("direction")=="right"){
+							$(this).css("right","0");
+						}
 					}
 				})
 			}
@@ -317,9 +385,15 @@ var $Xframe=(function layStyle(){
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$mask.css("opacity","0");
-				$(this).addClass("slideChange slideOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+				if($(this).attr("direction")=="left"){
+					$(this).addClass("slideChange leftSlideOut");	
+				}
+				else{
+					$(this).addClass("slideChange rightSlideOut");
+				}
+				$(this).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 					if($(e.target).attr("data-role")=="slideBar"){
-						$(this).removeClass("slideChange slideOut");
+						$(this).removeClass("slideChange leftSlideOut rightSlideOut");
 						$(this).css('display',"none");
 						$(this).css('z-index',"1");
 						$mask.css("display","none");

@@ -4,7 +4,7 @@
 	font-family: font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
-	background-color: rgb(245,245,245);
+	background-color: rgb(250,250,250);
 	overflow-x:hidden;
 	overflow-y: scroll
 }
@@ -26,22 +26,29 @@ body{
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: rgb(235,235,235);
-	border-bottom: 1px solid #cccccc;
+	background-color: rgb(245,245,245);
+	/*border-bottom: 1px solid #cccccc;
 	border-left: 1px solid #cccccc;
-	border-right: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;*/
+	box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
 	z-index: 1000;
 	text-align:center;
+}
+[data-role='header'].head-search-bar{
+	background-color: rgb(255,255,255);
+	box-shadow: none;
+	border: none;
 }
 [data-role='footer']{
 	height: 50px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	background-color: rgb(235,235,235);
-	border-top: 1px solid #cccccc;
+	background-color: rgb(245,245,245);
+	/*border-top: 1px solid #cccccc;
 	border-left: 1px solid #cccccc;
-	border-right: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;*/
+	box-shadow: 0px -1px 5px rgba(0,0,0,0.3);
 	z-index: 1000;
 }
 [data-role="content"]{
@@ -52,6 +59,7 @@ body{
 	border-right: 1px solid #999999;
 	padding: 0px;
 }
+/*垂直居中*/
 .VMcontent{
 	display: table;
 }
@@ -72,14 +80,15 @@ body{
 	clear: both;
 }
 [data-role='slideBar']{
-	width: 40%;
+	width: 50%;
 	max-width: 300px;
 	position: fixed;
 	top: 0;
 	display:none;
 	padding: 5px;
 }
-[data-role='header'] h4{
+/*顶部固定栏*/
+[data-role='header'] h4,.head-search{
 	margin: 0;
 	position:absolute;
 	margin:auto;
@@ -93,6 +102,19 @@ body{
 	text-overflow:ellipsis;
 	text-align: center;
 }
+.head-search{
+	border-bottom: 1px solid #999999;
+}
+.head-search input{
+	border: none;
+	margin-top: -3px;
+	background-color: rgba(0,0,0,0);
+	outline:none;
+	
+}
+.header-search span{
+	width: 20px;
+}
 .btn-head-right{
 	width: 50px;
 	height: 50px;
@@ -100,7 +122,8 @@ body{
 	margin: 0;
 	border-radius: 0;
 	font-size: 1.3em;
-	padding-top: 15px;
+	/*padding-top: 15px;*/
+	line-height: 50px;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -111,12 +134,16 @@ body{
 	float: left;
 	border-radius: 0;
 	font-size: 1.3em;
-	padding-top: 15px;
+	/*padding-top: 15px;*/
+	line-height: 50px;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-
+.btn-head-left label,.btn-head-right label{
+	font-size: 10px;font-weight: 100;margin-top: -5px;display: block;line-height: 10px;
+}
+/*底部页面内导航栏*/
 [data-role="nav"]{
 	margin: 0;
 	padding: 0;
@@ -142,10 +169,23 @@ body{
 	display: block;
 	height: 35px;
 	line-height: 35px;
+	overflow: hidden;
 }
 [data-role="nav"] li span img{
-	width: 17px;
-	margin-top: 10px;
+	width: 15px;
+	line-height: 35px;
+}
+[data-role="nav"] li.active span img.normal{
+	display: none;
+}
+[data-role="nav"] li.active span img.checked{
+	display: inline;
+}
+[data-role="nav"] li span img.normal{
+	display: inline;
+}
+[data-role="nav"] li span img.checked{
+	display: none;
 }
 [data-role="nav"] li label{
 	display: block;
@@ -154,6 +194,7 @@ body{
 	text-align: center;
 	line-height: 10px;
 	font-size: 0.6em;
+	font-weight: 100;
 }
 [data-role="nav"] li.active{
 	color: #0099ff;
@@ -171,6 +212,25 @@ body{
 	clear: both;
 	height: 0;
 }
+/*图片轮播*/
+.carousel-indicators{
+	margin-bottom: 0;
+}
+.carousel-indicators li{
+	width: 5px;
+	height: 5px;
+}
+.carousel-indicators li.active{
+	width: 5px;
+	height: 5px;
+	margin-bottom: 1px;
+}
+.carousel-caption{
+	padding-bottom: 0;
+}
+.item img{
+	margin: auto;
+}
 /****************animate*******************/
 .slideChange{
   -webkit-animation-duration: 0.3s;
@@ -178,57 +238,98 @@ body{
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-.slideIn{
-	-webkit-animation-name: si;
-  	animation-name: si;
+.leftSlideIn{
+	-webkit-animation-name: lsi;
+  	animation-name: lsi;
+  	left: 0;
+}
+@-webkit-keyframes lsi{
+	from{
+		-webkit-transform: translate3d(-100%, 0, 0);
+    	transform: translate3d(-100%, 0, 0);
+	}
+	to{
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
+	}
+}
+@keyframes  lsi{
+	from{
+		-webkit-transform: translate3d(-100%, 0, 0);
+    	transform: translate3d(-100%, 0, 0);
+	}
+	to{
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
+	}
+}
+.leftSlideOut{
+	-webkit-animation-name: lso;
+  	animation-name: lso;
+}
+@-webkit-keyframes lso{
+	from{
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
+	}
+	to{
+		-webkit-transform: translate3d(-100%, 0, 0);
+    	transform: translate3d(-100%, 0, 0);
+	}
+}
+@keyframes  lso{
+	from{
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
+	}
+	to{
+		-webkit-transform: translate3d(-100%, 0, 0);
+    	transform: translate3d(-100%, 0, 0);
+	}
+}
+.rightSlideIn{
+	-webkit-animation-name: rsi;
+  	animation-name: rsi;
   	right: 0;
 }
-@-webkit-keyframes si{
-	/*from{ right: -50%;}
-	to{right: 0;}*/
+@-webkit-keyframes rsi{
 	from{
 		-webkit-transform: translate3d(100%, 0, 0);
     	transform: translate3d(100%, 0, 0);
 	}
 	to{
-		-webkit-transform: none;
-    	transform: none;
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
 	}
 }
-@keyframes  si{
-	/*from{ right: -50%;}
-	to{right: 0;}*/
+@keyframes  rsi{
 	from{
 		-webkit-transform: translate3d(100%, 0, 0);
     	transform: translate3d(100%, 0, 0);
 	}
 	to{
-		-webkit-transform: none;
-    	transform: none;
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
 	}
 }
-.slideOut{
-	-webkit-animation-name: so;
-  	animation-name: so;
+.rightSlideOut{
+	-webkit-animation-name: rso;
+  	animation-name: rso;
 }
-@-webkit-keyframes so{
-	/*from{right: 0;}
-	to{right: -50%;}*/
+@-webkit-keyframes rso{
 	from{
-		-webkit-transform: none;
-    	transform: none;
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
 	}
 	to{
 		-webkit-transform: translate3d(100%, 0, 0);
     	transform: translate3d(100%, 0, 0);
 	}
 }
-@keyframes  so{
-	/*from{ right: 0;}
-	to{right: -50%;}*/
+@keyframes  rso{
 	from{
-		-webkit-transform: none;
-    	transform: none;
+		-webkit-transform: translate3d(0%, 0, 0);
+    	transform: translate3d(0%, 0, 0);
 	}
 	to{
 		-webkit-transform: translate3d(100%, 0, 0);
@@ -246,10 +347,8 @@ body{
   	animation-name: pi;
 }
 @-webkit-keyframes pi{
-	/*from{left: 100%;}
-	to{left: 0;}*/
 	from{
-		 -webkit-transform: translate3d(100%, 0, 0);
+		-webkit-transform: translate3d(100%, 0, 0);
     	transform: translate3d(100%, 0, 0);
 	}
 	to{
@@ -258,10 +357,8 @@ body{
 	}
 }
 @keyframes  pi{
-	/*from{ left: 100%;}
-	to{left: 0;}*/
 	from{
-		 -webkit-transform: translate3d(100%, 0, 0);
+		-webkit-transform: translate3d(100%, 0, 0);
     	transform: translate3d(100%, 0, 0);
 	}
 	to{
@@ -274,10 +371,8 @@ body{
   	animation-name: po;
 }
 @-webkit-keyframes po{
-	/*from{ left: -100%;}
-	to{left: 0%;}*/
 	from{
-		 -webkit-transform: translate3d(-15%, 0, 0);
+		-webkit-transform: translate3d(-15%, 0, 0);
     	transform: translate3d(-15%, 0, 0);
 	}
 	to{
@@ -286,8 +381,6 @@ body{
 	}
 }
 @keyframes  po{
-	/*from{ left: -100%;}
-	to{left: 0%;}*/
 	from{
 		 -webkit-transform: translate3d(-15%, 0, 0);
     	transform: translate3d(-15%, 0, 0);
@@ -308,20 +401,16 @@ body{
   	animation-name: pih;
 }
 @-webkit-keyframes pih{
-	/*from{ left: 0%;}
-	to{left: -15%;}*/
 	from{
 		-webkit-transform: none;
     	transform: none;
 	}
 	to{
-		 -webkit-transform: translate3d(-15%, 0, 0);
-   		 transform: translate3d(-15%, 0, 0);
+		-webkit-transform: translate3d(-15%, 0, 0);
+   		transform: translate3d(-15%, 0, 0);
 	}
 }
 @keyframes  pih{
-	/*from{ left: 0%;}
-	to{left: -15%;}*/
 	from{
 		-webkit-transform: none;
     	transform: none;
@@ -336,28 +425,23 @@ body{
   	animation-name: poh;
 }
 @-webkit-keyframes poh{
-	/*from{ left: 0%;}
-	to{left: 15%;}*/
-	
 	from{
 		-webkit-transform: none;
     	transform: none;
 	}
 	to{
-		 -webkit-transform: translate3d(100%, 0, 0);
-   		 transform: translate3d(115%, 0, 0);
+		-webkit-transform: translate3d(100%, 0, 0);
+		transform: translate3d(115%, 0, 0);
 	}
 }
 @keyframes  poh{
-	/*from{ left: 0%;}
-	to{left: 15%;}*/
 	from{
 		-webkit-transform: none;
     	transform: none;
 	}
 	to{
-		 -webkit-transform: translate3d(100%, 0, 0);
-   		 transform: translate3d(115%, 0, 0);
+		-webkit-transform: translate3d(100%, 0, 0);
+   		transform: translate3d(115%, 0, 0);
 	}
 }
 
@@ -372,7 +456,6 @@ body{
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -382,7 +465,6 @@ body{
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -406,7 +488,6 @@ body{
 	display: table-cell;
 	vertical-align: middle;
 }
-
 .btn-primary {
   	color: #fff;
   	background-color: #0099ff;
