@@ -1,7 +1,3 @@
-
- # X-Frame
- 用来开发移动端web页面webApp的自用轻框架
- 
  /＊＊＊＊页面＊＊＊＊／
  定义一个页面
  <div data-role="page" id="pageID">
