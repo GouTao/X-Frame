@@ -6,6 +6,10 @@ $("#pageAll").on("init",function(){
 	$('#faceBanner').hammer().bind('swiperight', function(){
 		$(this).carousel('prev');
 	});
+	$Xframe.loadShow();
+	setTimeout(function(){
+		$Xframe.loadHide();
+	},2000);
 })
 $("#pageSearch").on("init",function(){
 	$("#searchBtn").on("click",function(){

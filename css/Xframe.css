@@ -453,10 +453,15 @@ body{
 }
 
 .animated {
-  -webkit-animation-duration: 0.75s;
-  animation-duration: 0.75s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }
 
 @-webkit-keyframes fadeIn {
@@ -477,10 +482,76 @@ body{
   }
 }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
 }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.rotateAnimate{
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: rotate;
+	animation-name: rotate;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function:linear;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -180deg);
+    transform: rotate3d(0, 0, 1, -180deg);
+  }
+
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -180deg);
+    transform: rotate3d(0, 0, 1, -180deg);
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);;
+    transform: rotate3d(0, 0, 1, 180deg);;
+    opacity: 1;
+  }
+}
+
 #loading{
 	background-color: rgba(0,0,0,0.1);
 	font-size: 2em;
@@ -494,4 +565,17 @@ body{
 #loading div{
 	display: table-cell;
 	vertical-align: middle;
+	text-align: center;
+}
+#loading div div{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 20px;
+	border-top-color: rgba(0,0,0,0.2);
+	border-right-color: rgba(0,0,0,0.4);
+	border-bottom-color: rgba(0,0,0,0.6);
+	border-left-color: rgba(0,0,0,0.8);
 }
