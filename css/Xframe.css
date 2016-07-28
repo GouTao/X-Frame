@@ -1,7 +1,11 @@
+@font-face {
+	font-family:xhkt;
+	src: url("xhkt.ttf") format("truetype");
+}
 *{
 	box-sizing: border-box;
 	word-break: break-word;
-	font-family: font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family:"xhkt", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body{
 	background-color: rgb(250,250,250);
