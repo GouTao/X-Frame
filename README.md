@@ -107,7 +107,20 @@ laoding效果消失动画...
  
  $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
 
+# 关于字体
+ 各个平台都对汉字字体都特么屎一样的支持度，所以只能够
+```html
+	@font-face {
+		font-family:xhkt;
+		src: url("xhkt.ttf") format("truetype");  //ios可用
+	}
+	*{
+		box-sizing: border-box;
+		word-break: break-word;
+		font-family:"xhkt", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+```
 # 致谢
-   提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
+ mac window提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
 
 
