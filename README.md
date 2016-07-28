@@ -100,10 +100,14 @@ laoding效果消失动画...
 ```
 # 一些方法
  $Xframe.to(pageID,direction)  //跳转到某一页，direction不填为从左至右，值right为从右至左
+ 
  $Xframe.refresh(type,container)  //type为刷新类型，container为需要刷新的组件（值为jq选择器条件）
+ 
  $Xframe.pageReshow(pageID)   //重置某一个页面到第一个page-mode，如果该页面存在page-mode
+ 
  $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
 
 # 致谢
-   提供汉字字体解决方案  https://github.com/zenozeng/fonts.css/tree/master
+   提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
+
 
