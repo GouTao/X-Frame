@@ -121,6 +121,6 @@ laoding效果消失动画...
 	}
 ```
 # 致谢
- mac window提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
+ mac windows提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
 
 
