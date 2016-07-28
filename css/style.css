@@ -4,3 +4,8 @@
 #faceBanner{
 	background-color: rgba(99,99,99,1);
 }
+.btn-primary {
+  	color: #fff;
+  	background-color: #0099ff;
+  	border-color: #0088ff;
+}
