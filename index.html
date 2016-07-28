@@ -18,13 +18,24 @@
 		<div data-role="page" id="pageAll">
 			<div data-role="header">
 				<h4>首页</h4>
-				<div class="btn-head-left" data-role="slide-lead" data-target="userSlide" >
-					<span class="glyphicon glyphicon-th-list"></span>
-					<label>最近浏览</label>
+				<div data-role="mode-head" data-target="pm1">
+					<div class="btn-head-left" data-role="slide-lead" data-target="userSlide" >
+						<span class="glyphicon glyphicon-th-list"></span>
+						<label>最近浏览</label>
+					</div>
+					<div class="btn-head-right" data-role="page-lead" data-target="pageEdit" data-direction="right">
+						<span class="glyphicon glyphicon-file"></span>
+						<label>新帖</label>
+					</div>
 				</div>
-				<div class="btn-head-right" data-role="page-lead" data-target="pageEdit" data-direction="right">
-					<span class="glyphicon glyphicon-file"></span>
-					<label>新帖</label>
+				<div data-role="mode-head" data-target="pm3">
+					<div class="btn-head-right" data-role="slide-lead" data-target="slidemode" data-direction="right">
+						<span class="glyphicon glyphicon-tags"></span>
+					</div>
+					<div class="btn-head-left" data-role="page-lead" data-target="pageMail" data-direction="right">
+						<span class="glyphicon glyphicon-comment"></span>
+						<label>发信</label>
+					</div>
 				</div>
 			</div>
 			<div data-role="content">
@@ -100,7 +111,7 @@
 				<div class="head-search">
 					<input id="searchInput"/>
 				</div>
-				<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse">
+				<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse" id="toMain">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</div>
 				<div class="btn-head-right" id="searchBtn">
@@ -121,16 +132,33 @@
 		<div data-role='page' id="pageEdit">
 			<div data-role="header">
 				<h4>发表</h4>
-				<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-				</div>
-				<div class="btn-head-right" data-role="slide-lead" data-target="slidemode" data-direction="reverse">
-					<span class="glyphicon glyphicon-tags"></span>
-				</div>
+				<div data-role="mode-head">
+					<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse" >
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</div>
+					<div class="btn-head-right">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</div>
+				</div>		
 			</div>
 			<div data-role="content">
 				
 			</div>
+		</div>
+		
+		<div data-role="page" id="pageMail">
+			<div data-role="header">
+				<h4>发送信息</h4>
+				<div data-role="mode-head">
+					<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</div>
+					<div class="btn-head-right" data-role="page-lead" data-target="pageAll" data-direction="reverse" id="toMain1">
+						<span class="glyphicon glyphicon-home"></span>
+					</div>
+				</div>
+			</div>
+			<div data-role="content"></div>
 		</div>
 		
 		<div data-role="slideBar" data-slideBar="userSlide" style="background-color: black;">

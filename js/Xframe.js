@@ -1,5 +1,5 @@
 var $Xframe=(function layStyle(){
-	var pageRoute=[];
+	//var pageRoute=[];
 	var tempPage,targPage;
 	var $mask
 	var loading=$("<div id='loading' style='display:none'>"+
@@ -64,6 +64,10 @@ var $Xframe=(function layStyle(){
 			slideLead($(this));
 		})
 		
+		$("[data-role='mode-head']").each(function(){
+			modeHead($(this));
+		})
+		
 		$("[data-role='slide-back']").each(function(){
 			slideBack($(this));
 		})
@@ -89,6 +93,11 @@ var $Xframe=(function layStyle(){
 		
 		$($("[data-role='page']")[0]).attr("inited","true").trigger("init");
 	})
+	//mode头部
+	function modeHead($target){
+		
+	}
+	
 	//头部导航按钮
 	function btnHead($target){
 		if($target.children("label").length!=0){
@@ -235,6 +244,15 @@ var $Xframe=(function layStyle(){
 
 						}
 					})
+					$(this).parents("[data-role='page']").find("[data-role='header']").find("[data-role='mode-head']").each(function(){
+						if($(this).attr("data-target")==mode){
+							$(this).show();
+						}
+						else{
+							$(this).hide();
+
+						}
+					})
 					mode=null;
 				}
 			}
@@ -279,7 +297,7 @@ var $Xframe=(function layStyle(){
 		else{
 			$("#"+pageID).trigger("show");
 		}
-		pageRoute.push(tempPage);
+		//pageRoute.push(tempPage);
 		if(type != "reverse"){
 			$("[data-role='page']").css("z-index","1");
 			$("#"+pageID).css("z-index","100");
@@ -296,20 +314,6 @@ var $Xframe=(function layStyle(){
 		else{
 			tempPage.addClass("pageChange-half pageIn-half");
 		}
-//		if($("#"+pageID).find("[data-role='nav']")[0]!=undefined){
-//			$("#"+pageID).find("[data-role='nav']").children("li").each(function(){
-//				$(this).removeClass('active');
-//			})
-//			if($("#"+pageID).find("[data-role='nav']").children("li:first-child").attr("mode-target")!=undefined){
-//				$("#"+pageID).find("[data-role='nav']").children("li:first-child").addClass('active');
-//			}
-//			$("#"+pageID).find("[data-role='page-mode']").each(function(){
-//				$(this).removeClass('active');
-//			})
-//			$("#"+pageID).find("[data-role='page-mode']:first-child").addClass('active');
-//			
-//			$("#"+pageID).trigger("show");
-//		}
 		if(type == "reverse"){
 			$("#"+pageID).addClass("pageChange pageOut");
 		}
@@ -330,29 +334,29 @@ var $Xframe=(function layStyle(){
 		});
 	}
 	//页面直接返回上一个id
-	layStyle.back=function(){
-		targPage=pageRoute[pageRoute.length-1];
-		targPage.children("[data-role='header']").css('position','absolute');
-		targPage.children("[data-role='footer']").css('position','absolute');
-		tempPage.children("[data-role='header']").css('position','absolute');
-		tempPage.children("[data-role='footer']").css('position','absolute');
-		targPage.css("display","block");
-		$mask.css("display","block");
-		tempPage.addClass("pageChange-half pageOut-half");
-		targPage.addClass("pageChange pageOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
-			if($(e.target).attr("data-role")=="page"){
-				targPage.removeClass("pageChange pageOut");
-				tempPage.removeClass('pageChange-half pageOut-half');
-				targPage.children("[data-role='header']").css('position','fixed');
-				targPage.children("[data-role='footer']").css('position','fixed');
-				$mask.css("display","none")
-				tempPage.css('display','none');
-				pageRoute.splice(pageRoute.length-1,1);
-				tempPage.trigger("hide");
-				tempPage=targPage;
-			}
-		});
-	}
+//	layStyle.back=function(){
+//		targPage=pageRoute[pageRoute.length-1];
+//		targPage.children("[data-role='header']").css('position','absolute');
+//		targPage.children("[data-role='footer']").css('position','absolute');
+//		tempPage.children("[data-role='header']").css('position','absolute');
+//		tempPage.children("[data-role='footer']").css('position','absolute');
+//		targPage.css("display","block");
+//		$mask.css("display","block");
+//		tempPage.addClass("pageChange-half pageOut-half");
+//		targPage.addClass("pageChange pageOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+//			if($(e.target).attr("data-role")=="page"){
+//				targPage.removeClass("pageChange pageOut");
+//				tempPage.removeClass('pageChange-half pageOut-half');
+//				targPage.children("[data-role='header']").css('position','fixed');
+//				targPage.children("[data-role='footer']").css('position','fixed');
+//				$mask.css("display","none")
+//				tempPage.css('display','none');
+//				pageRoute.splice(pageRoute.length-1,1);
+//				tempPage.trigger("hide");
+//				tempPage=targPage;
+//			}
+//		});
+//	}
 	//边侧栏出现
 	layStyle.slideBarIn=function(slideID,direction){
 		$("[data-role='slideBar']").each(function(){
@@ -401,6 +405,26 @@ var $Xframe=(function layStyle(){
 				})
 			}
 		})
+	}
+	
+	//回到某个页面的第一个模块
+	layStyle.pageReshow=function(pageID){
+		if($("#"+pageID).find("[data-role='nav']")[0]!=undefined){
+			$("#"+pageID).find("[data-role='nav']").children("li").each(function(){
+				$(this).removeClass('active');
+			})
+			if($("#"+pageID).find("[data-role='nav']").children("li:first-child").attr("mode-target")!=undefined){
+				$("#"+pageID).find("[data-role='nav']").children("li:first-child").addClass('active');
+			}
+			$("#"+pageID).find("[data-role='page-mode']").each(function(){
+				$(this).removeClass('active');
+			})
+			$("#"+pageID).find("[data-role='page-mode']:first-child").addClass('active');
+			$("#"+pageID).find("[data-role='mode-head']").each(function(){
+				$(this).hide();
+			})
+			$("#"+pageID).find("[data-role='mode-head']:first-of-type").show();
+		}
 	}
 	
 	//显示load界面

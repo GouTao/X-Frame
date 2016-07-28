@@ -12,3 +12,8 @@ $("#pageSearch").on("init",function(){
 		alert("search")
 	})
 })
+$("#pageMail").on('init',function(){
+	$("#toMain1").on("click",function(){
+		$Xframe.pageReshow("pageAll")
+	})
+})

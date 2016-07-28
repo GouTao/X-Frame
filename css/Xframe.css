@@ -34,6 +34,13 @@ body{
 	z-index: 1000;
 	text-align:center;
 }
+[data-role='header'] [data-role='mode-head']{
+	display: none;
+}
+[data-role='header'] [data-role='mode-head']:first-of-type{
+	display:block;
+}
+
 [data-role='header'].head-search-bar{
 	background-color: rgb(255,255,255);
 	box-shadow: none;
