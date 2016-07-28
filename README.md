@@ -104,4 +104,6 @@ laoding效果消失动画...
  $Xframe.pageReshow(pageID)   //重置某一个页面到第一个page-mode，如果该页面存在page-mode
  $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
 
+# 致谢
+   提供汉字字体解决方案  https://github.com/zenozeng/fonts.css/tree/master
 
