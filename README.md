@@ -3,11 +3,19 @@
 
 # 已经实现的功能：
 单页应用页面之间的切换,
+
 页面内部不同模块的切换,
+
 侧滑栏出现消失,
+
 动态dom刷新绑定事件,
-laoding效果消失动画,
-侧滑栏出现背景内容模糊处理...
+
+loading效果消失动画,
+
+侧滑栏出现背景内容模糊处理,
+
+#new 
+用require.js处理js文件加载
 
 # 页面
 定义一个页面
@@ -109,13 +117,17 @@ laoding效果消失动画,
  $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
  
  $Xframe.slideBarOut(slideBarID)  //隐藏侧滑栏
+ 
+ $("#"+pageID).on("init",function(){//do sth})   //页面初次加载  *由于dom加载优先，所以第一个页面侦听不到init事件
+ 
+ $("#"+pageID).on("show",function(){//do sth})   //页面再次出现
 
 # 关于字体
  各个平台都对汉字字体都特么屎一样的支持度，所以只能够
 ```html
 	@font-face {
 		font-family:xhkt;
-		src: url("xhkt.ttf") format("truetype");  //ios可用
+		src: url("新华楷体.ttf") format("truetype");  //ios可用
 	}
 	*{
 		box-sizing: border-box;

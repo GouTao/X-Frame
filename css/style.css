@@ -6,3 +6,19 @@
   	background-color: #0099ff;
   	border-color: #0088ff;
 }
+#faceContent{
+	width: 100%;
+	position: fixed;
+	top: 20%;
+	text-align: center;
+}
+#faceImg{
+	width: 50%;
+	max-width: 200px;
+}
+#enterApp{
+	width: 40%;
+	max-width: 160px;
+	margin: auto;
+	margin-top: 10px;
+}
