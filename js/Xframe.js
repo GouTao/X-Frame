@@ -11,7 +11,6 @@ var $Xframe=(function layStyle(){
 					"</div>"+
 				"</div>")
 		$("body").append($loading);
-		console.log($loading)
 		$mask=$("<div class='mask' style='background-color:rgba(0,0,0,0.3)'></div>");
 		$('body').append($mask);
 		$mask.css("display","none");
@@ -25,6 +24,9 @@ var $Xframe=(function layStyle(){
 					else{
 						$(this).addClass("slideChange rightSlideOut");
 					}
+					$("[data-role='page']").each(function(){
+						$(this).removeClass('blur');
+					})
 					$(this).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 						if($(e.target).attr("data-role")=="slideBar"){
 							$(this).removeClass("slideChange leftSlideOut rightSlideOut");
@@ -362,6 +364,9 @@ var $Xframe=(function layStyle(){
 //	}
 	//边侧栏出现
 	layStyle.slideBarIn=function(slideID,direction){
+		$("[data-role='page']").each(function(){
+			$(this).addClass('blur');
+		})
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$(this).css('display',"block");
@@ -387,8 +392,11 @@ var $Xframe=(function layStyle(){
 			}
 		})
 	}
-	//编程栏消失
+	//边侧栏消失
 	layStyle.slideBarOut=function(slideID){
+		$("[data-role='page']").each(function(){
+			$(this).removeClass('blur');
+		})
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$mask.css("opacity","0");

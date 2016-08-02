@@ -6,7 +6,8 @@
 页面内部不同模块的切换,
 侧滑栏出现消失,
 动态dom刷新绑定事件,
-laoding效果消失动画...
+laoding效果消失动画,
+侧滑栏出现背景内容模糊处理...
 
 # 页面
 定义一个页面
@@ -106,6 +107,8 @@ laoding效果消失动画...
  $Xframe.pageReshow(pageID)   //重置某一个页面到第一个page-mode，如果该页面存在page-mode
  
  $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
+ 
+ $Xframe.slideBarOut(slideBarID)  //隐藏侧滑栏
 
 # 关于字体
  各个平台都对汉字字体都特么屎一样的支持度，所以只能够
