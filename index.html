@@ -5,17 +5,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<title>X-Frame</title>
 		<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/fonts.css" />
 		<link rel="stylesheet" href="css/Xframe.css" />
 		<link rel="stylesheet" href="css/style.css" />
-			
-		<script type="text/javascript" src="bootstrap-3.3.5-dist/js/jquery.min.js" ></script>
-		<script type="text/javascript" src="bootstrap-3.3.5-dist/js/bootstrap.min.js" ></script>
-		<script type="text/javascript" src="js/hammer/hammer.min.js" ></script>
-		<script type="text/javascript" src="js/hammer/jquery.hammer.js" ></script>
-		<script type="text/javascript" src="js/Xframe.js" ></script>
+
 	</head>
-	<body>
-		<div data-role="page" id="pageAll">
+	<body >
+		<div data-role="page">
+			<div id="faceContent">
+				<img src="img/face.png" id="faceImg"/>
+				<btn id="enterApp" class="btn btn-baisc btn-unable btn-block" >进入</div>
+			</div>
+		</div>
+		
+		<div data-role="page" id="pageFirst">
 			<div data-role="header">
 				<h4>首页</h4>
 				<div data-role="mode-head" data-target="pm1">
@@ -32,7 +35,7 @@
 					<div class="btn-head-right" data-role="slide-lead" data-target="slidemode" data-direction="right">
 						<span class="glyphicon glyphicon-tags"></span>
 					</div>
-					<div class="btn-head-left" data-role="page-lead" data-target="pageMail" data-direction="right">
+					<div class="btn-head-left" data-role="page-lead" data-target="pageMsg" data-direction="right">
 						<span class="glyphicon glyphicon-comment"></span>
 						<label>发信</label>
 					</div>
@@ -111,7 +114,7 @@
 				<div class="head-search">
 					<input id="searchInput"/>
 				</div>
-				<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse" id="toMain">
+				<div class="btn-head-left" data-role="page-lead" data-target="pageFirst" data-direction="reverse" id="toMain">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</div>
 				<div class="btn-head-right" id="searchBtn">
@@ -133,7 +136,7 @@
 			<div data-role="header">
 				<h4>发表</h4>
 				<div data-role="mode-head">
-					<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse" >
+					<div class="btn-head-left" data-role="page-lead" data-target="pageFirst" data-direction="reverse" >
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</div>
 					<div class="btn-head-right">
@@ -146,14 +149,14 @@
 			</div>
 		</div>
 		
-		<div data-role="page" id="pageMail">
+		<div data-role="page" id="pageMsg">
 			<div data-role="header">
 				<h4>发送信息</h4>
 				<div data-role="mode-head">
-					<div class="btn-head-left" data-role="page-lead" data-target="pageAll" data-direction="reverse">
+					<div class="btn-head-left" data-role="page-lead" data-target="pageFirst" data-direction="reverse">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</div>
-					<div class="btn-head-right" data-role="page-lead" data-target="pageAll" data-direction="reverse" id="toMain1">
+					<div class="btn-head-right" data-role="page-lead" data-target="pageFirst" data-direction="reverse" id="toMain1">
 						<span class="glyphicon glyphicon-home"></span>
 					</div>
 				</div>
@@ -191,6 +194,6 @@
 				})
 			})
 		</script>-->
-		<script type="text/javascript" src="js/app.js" ></script>
+		<script type="text/javascript" src="js/require.js" data-main="js/main"></script>
 	</body>
 </html>

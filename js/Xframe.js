@@ -1,16 +1,16 @@
 var $Xframe=(function layStyle(){
 	//var pageRoute=[];
 	var tempPage,targPage;
-	var $mask
-	var loading=$("<div id='loading' style='display:none'>"+
-				"<div>"+
-					"<span class='glyphicon glyphicon-globe'><p style='font-size: 0.3em;'>LOADING...</p></span>"+
-				"</div>"+
-			"</div>")
-	$("body").append(loading)
+	var $mask,$loading;
 	$(window).on("resize",layout);
 	$(window).bind('orientationchange',layout);
 	$(document).ready(function(){
+		$loading=$("<div id='loading' style='display:none'>"+
+					"<div style='width:100%'>"+
+						"<div class='rotateAnimate'></div><p style='font-size: 0.3em;'>LOADING...</p>"+
+					"</div>"+
+				"</div>")
+		$("body").append($loading);
 		$mask=$("<div class='mask' style='background-color:rgba(0,0,0,0.3)'></div>");
 		$('body').append($mask);
 		$mask.css("display","none");
@@ -24,6 +24,9 @@ var $Xframe=(function layStyle(){
 					else{
 						$(this).addClass("slideChange rightSlideOut");
 					}
+					$("[data-role='page']").each(function(){
+						$(this).removeClass('blur');
+					})
 					$(this).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 						if($(e.target).attr("data-role")=="slideBar"){
 							$(this).removeClass("slideChange leftSlideOut rightSlideOut");
@@ -148,6 +151,8 @@ var $Xframe=(function layStyle(){
 		});
 		$("#loading").css("width",$(window).width());
 		$("#loading").css("height",$(window).height());
+		$("#loading div div").css("left",$(window).width()/2-15);
+		$("#loading div div").css("top",$(window).height()/2-50);
 	}
 	
 	//页面切换
@@ -359,6 +364,9 @@ var $Xframe=(function layStyle(){
 //	}
 	//边侧栏出现
 	layStyle.slideBarIn=function(slideID,direction){
+		$("[data-role='page']").each(function(){
+			$(this).addClass('blur');
+		})
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$(this).css('display',"block");
@@ -384,8 +392,11 @@ var $Xframe=(function layStyle(){
 			}
 		})
 	}
-	//编程栏消失
+	//边侧栏消失
 	layStyle.slideBarOut=function(slideID){
+		$("[data-role='page']").each(function(){
+			$(this).removeClass('blur');
+		})
 		$("[data-role='slideBar']").each(function(){
 			if($(this).attr("data-slideBar")==slideID){
 				$mask.css("opacity","0");
@@ -433,7 +444,11 @@ var $Xframe=(function layStyle(){
 	}
 	//隐藏load界面
 	layStyle.loadHide=function(){
-		$("#loading").hide();
+		$("#loading").addClass("animated fadeOut")
+		$("#loading").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+			$("#loading").remove("animated fadeOut");
+			$("#loading").hide();
+		})
 	}
 	return layStyle
 })()

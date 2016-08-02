@@ -1,8 +1,12 @@
+/*@font-face {
+	font-family:xhkt;
+	src: url("xhkt.ttf") format("truetype");
+}
 *{
 	box-sizing: border-box;
 	word-break: break-word;
-	font-family: font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+	font-family:"xhkt", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}*/
 body{
 	background-color: rgb(255,255,255);
 	overflow-x:hidden;
@@ -72,6 +76,7 @@ body{
 .VMinner{
 	display: table-cell;
 	vertical-align: middle;
+	text-align: center;
 }
 [data-role='content'].withHeader:before{
 	content: "";
@@ -93,6 +98,25 @@ body{
 	display:none;
 	padding: 5px;
 }
+
+
+.btn-baisc{
+	color: #0099ff;
+	background-color: rgba(0,0,0,0);
+	border-color: #0099ff;
+}
+.btn-baisc:active{
+	color: #FFFFFF;
+	background-color: #0099ff;
+  	border-color: #0088ff;
+}
+.btn-unable{
+	pointer-events: none;
+	color: #FFFFFF;
+	background-color: #CCCCCC;
+  	border-color: #CCCCCC;
+}
+
 /*顶部固定栏*/
 [data-role='header'] h4,.head-search{
 	margin: 0;
@@ -236,6 +260,19 @@ body{
 .item img{
 	margin: auto;
 }
+
+/****************模糊滤镜*******************/
+.blur {	
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
 /****************animate*******************/
 .slideChange{
   -webkit-animation-duration: 0.3s;
@@ -451,10 +488,15 @@ body{
 }
 
 .animated {
-  -webkit-animation-duration: 0.75s;
-  animation-duration: 0.75s;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }
 
 @-webkit-keyframes fadeIn {
@@ -475,10 +517,76 @@ body{
   }
 }
 
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
 }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.rotateAnimate{
+	-webkit-animation-duration: 0.5s;
+	animation-duration: 0.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: rotate;
+	animation-name: rotate;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function:linear;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -180deg);
+    transform: rotate3d(0, 0, 1, -180deg);
+  }
+
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, -180deg);
+    transform: rotate3d(0, 0, 1, -180deg);
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);;
+    transform: rotate3d(0, 0, 1, 180deg);;
+    opacity: 1;
+  }
+}
+
 #loading{
 	background-color: rgba(0,0,0,0.1);
 	font-size: 2em;
@@ -492,9 +600,17 @@ body{
 #loading div{
 	display: table-cell;
 	vertical-align: middle;
+	text-align: center;
 }
-.btn-primary {
-  	color: #fff;
-  	background-color: #0099ff;
-  	border-color: #0088ff;
+#loading div div{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 20px;
+	border-top-color: rgba(0,0,0,0.2);
+	border-right-color: rgba(0,0,0,0.4);
+	border-bottom-color: rgba(0,0,0,0.6);
+	border-left-color: rgba(0,0,0,0.8);
 }
