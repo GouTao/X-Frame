@@ -14,8 +14,10 @@ loading效果消失动画,
 
 侧滑栏出现背景内容模糊处理,
 
+用require.js处理js文件加载，
+
 #new 
-用require.js处理js文件加载
+loading动画现在为可选择实现
 
 # 页面
 定义一个页面
@@ -114,7 +116,9 @@ loading效果消失动画,
  
  $Xframe.pageReshow(pageID)   //重置某一个页面到第一个page-mode，如果该页面存在page-mode
  
- $Xframe.loadShow()/$Xframe.loadHide()   //显示或者隐藏加载等待覆盖层
+ $Xframe.loadShow()   //显示或者隐藏加载等待覆盖层
+ 
+ $Xframe.loadHide(type)  //可选参数type为"fadeOut"时，loading缓动消失
  
  $Xframe.slideBarOut(slideBarID)  //隐藏侧滑栏
  

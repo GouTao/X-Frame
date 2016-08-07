@@ -443,12 +443,17 @@ var $Xframe=(function layStyle(){
 		$("#loading").show();
 	}
 	//隐藏load界面
-	layStyle.loadHide=function(){
-		$("#loading").addClass("animated fadeOut")
-		$("#loading").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
-			$("#loading").remove("animated fadeOut");
+	layStyle.loadHide=function(type){
+		if(type != "fadeOut"){
 			$("#loading").hide();
-		})
+		}
+		else{
+			$("#loading").addClass("animated fadeOut")
+			$("#loading").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
+				$("#loading").remove("animated fadeOut");
+				$("#loading").hide();
+			})
+		}
 	}
 	return layStyle
 })()
