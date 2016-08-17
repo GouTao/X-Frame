@@ -140,6 +140,7 @@ loading动画现在为可选择实现
 	}
 ```
 # 致谢
+ animate.css
  mac windows提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
 
 
