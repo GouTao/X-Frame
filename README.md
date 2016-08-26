@@ -16,8 +16,10 @@ loading效果消失动画,
 
 用require.js处理js文件加载，
 
-#new 
 loading动画现在为可选择实现
+
+#new 
+为css增加-webkit-overflow-scrolling: touch，解决ios5+滑动卡顿问题
 
 # 页面
 定义一个页面
