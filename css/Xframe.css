@@ -10,7 +10,8 @@
 body{
 	background-color: rgb(255,255,255);
 	overflow-x:hidden;
-	overflow-y: scroll
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 [data-role='page']{
 	width: 100%;
