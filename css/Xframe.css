@@ -10,7 +10,8 @@
 body{
 	background-color: rgb(255,255,255);
 	overflow-x:hidden;
-	overflow-y: scroll
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
 }
 [data-role='page']{
 	width: 100%;
@@ -107,6 +108,11 @@ body{
 	border-color: #0099ff;
 }
 .btn-baisc:active{
+	color: #FFFFFF;
+	background-color: #0099ff;
+  	border-color: #0088ff;
+}
+.btn-baisc:hover{
 	color: #FFFFFF;
 	background-color: #0099ff;
   	border-color: #0088ff;

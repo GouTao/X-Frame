@@ -16,8 +16,14 @@ loading效果消失动画,
 
 用require.js处理js文件加载，
 
+loading动画现在为可选择实现,
+
 #new 
-loading动画现在为可选择实现
+绑定html代码片段    
+bind-action="auto" 自动加载页面，否则请使用$Xframe.bindPageLoad(container,callback)方法
+```html
+<div data-role='page-bind' data-bind="./htmls/staticHtml.html" bind-action="auto" ></div>
+```
 
 # 页面
 定义一个页面
@@ -125,6 +131,8 @@ loading动画现在为可选择实现
  $("#"+pageID).on("init",function(){//do sth})   //页面初次加载  *由于dom加载优先，所以第一个页面侦听不到init事件
  
  $("#"+pageID).on("show",function(){//do sth})   //页面再次出现
+ 
+ $Xframe.bindPageLoad(container,callback)   //绑定html页面，container为JQ对象
 
 # 关于字体
  各个平台都对汉字字体都特么屎一样的支持度，所以只能够

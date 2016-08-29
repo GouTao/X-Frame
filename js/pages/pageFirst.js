@@ -10,6 +10,12 @@ define(function pageFirst(){
 		$Xframe.loadShow();
 		setTimeout(function(){
 			$Xframe.loadHide();
-		},2000);	
+		},2000);
+		$Xframe.bindPageLoad($("#loadHtml"),function(){
+			var $p = $("<p>bind over</p>")
+			$("#loadHtml").append($p);
+			$("#loadHtml").css("border","1px solid #cccccc")
+		})
+		
 	})
 })
