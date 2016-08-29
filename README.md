@@ -18,6 +18,8 @@ loading效果消失动画,
 
 loading动画现在为可选择实现,
 
+为css增加-webkit-overflow-scrolling: touch，解决ios5+滑动卡顿问题
+
 #new 
 绑定html代码片段    
 bind-action="auto" 自动加载页面，否则请使用$Xframe.bindPageLoad(container,callback)方法
@@ -148,6 +150,7 @@ bind-action="auto" 自动加载页面，否则请使用$Xframe.bindPageLoad(cont
 	}
 ```
 # 致谢
+ animate.css
  mac windows提供汉字字体解决方案  https://github.com/zenozeng/fonts.css
 
 
