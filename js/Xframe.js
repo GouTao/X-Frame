@@ -2,6 +2,8 @@ var $Xframe=(function layStyle(){
 	var pageRoute=[];
 	var tempPage,targPage;
 	var $mask,$loading;
+	$mask=$("<div class='mask' style='background-color:rgba(0,0,0,0.3)'></div>");
+	$('body').append($mask);
 	$(window).on("resize",layout);
 	$(window).bind('orientationchange',layout);
 	$(document).ready(function(){
@@ -11,8 +13,6 @@ var $Xframe=(function layStyle(){
 					"</div>"+
 				"</div>")
 		$("body").append($loading);
-		$mask=$("<div class='mask' style='background-color:rgba(0,0,0,0.3)'></div>");
-		$('body').append($mask);
 		$mask.css("display","none");
 		$mask.on("mouseup",function(){
 			$mask.css("opacity","0");
@@ -56,8 +56,9 @@ var $Xframe=(function layStyle(){
 				}
 			}
 		})
-		layout();
 		tempPage=$("[data-role='page']:first-child");
+		console.log(tempPage)
+		layout();
 		
 		$("[data-role='page-lead']").each(function(){
 			pageLead($(this));
@@ -95,7 +96,6 @@ var $Xframe=(function layStyle(){
 		})
 		$("[data-role='page-bind']").each(function(){
 			if($(this).attr("bind-action")&&$(this).attr("bind-action")=="auto"){
-				console.log("auto load")
 				bindLoad($(this),null);
 			}
 		})
@@ -344,20 +344,24 @@ var $Xframe=(function layStyle(){
 			$("#"+pageID).css("z-index","100");
 		}
 		$("#"+pageID).css("display","block");
-		try{
+		//try{
 			$("#"+pageID).children("[data-role='header']").css('position','absolute');
 			$("#"+pageID).children("[data-role='footer']").css('position','absolute');
 			tempPage.children("[data-role='header']").css('position','absolute');
 			tempPage.children("[data-role='footer']").css('position','absolute');
-		}catch(e){}
+		//}catch(e){}
 		
 		
 		$mask.css("display","block");
 		if(type == "reverse"){
-			tempPage.addClass("pageChange-half pageOut-half");
+			//try{
+				tempPage.addClass("pageChange-half pageOut-half");
+			//}catch(e){}
 		}
 		else{
-			tempPage.addClass("pageChange-half pageIn-half");
+			//try{
+				tempPage.addClass("pageChange-half pageIn-half");
+			//}catch(e){}
 		}
 		if(type == "reverse"){
 			$("#"+pageID).addClass("pageChange pageOut");
@@ -368,44 +372,44 @@ var $Xframe=(function layStyle(){
 		$("#"+pageID).one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 			if($(e.target).attr("data-role")=="page"){
 				$("#"+pageID).removeClass("pageChange pageIn pageOut");
-				tempPage.removeClass('pageChange-half pageIn-half pageOut-half');
-				try{
+				//try{
+					tempPage.removeClass('pageChange-half pageIn-half pageOut-half');
 					$("#"+pageID).children("[data-role='header']").css('position','fixed');
 					$("#"+pageID).children("[data-role='footer']").css('position','fixed');	
-				}catch(e){}
-				$mask.css("display","none")
-				tempPage.css('display','none');
-				tempPage.trigger("hide");
-				tempPage=$("#"+pageID);
+					$mask.css("display","none")
+					tempPage.css('display','none');
+					tempPage.trigger("hide");
+					tempPage=$("#"+pageID);
+				//}catch(e){}
 			}
 		});
 	}
 	//页面直接返回上一个id
 	layStyle.back=function(){
 		targPage=pageRoute[pageRoute.length-1];
-		try{
+		//try{
 			targPage.children("[data-role='header']").css('position','absolute');
 			targPage.children("[data-role='footer']").css('position','absolute');
 			tempPage.children("[data-role='header']").css('position','absolute');
 			tempPage.children("[data-role='footer']").css('position','absolute');
-		}catch(e){}
+		//}catch(e){}
 		
 		targPage.css("display","block");
 		$mask.css("display","block");
 		tempPage.addClass("pageChange-half pageOut-half");
 		targPage.addClass("pageChange pageOut").one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",function(e){
 			if($(e.target).attr("data-role")=="page"){
-				targPage.removeClass("pageChange pageOut");
-				tempPage.removeClass('pageChange-half pageOut-half');
-				try{
+				//try{
+					targPage.removeClass("pageChange pageOut");
+					tempPage.removeClass('pageChange-half pageOut-half');
 					targPage.children("[data-role='header']").css('position','fixed');
 					targPage.children("[data-role='footer']").css('position','fixed');
-				}catch(e){}
-				$mask.css("display","none")
-				tempPage.css('display','none');
-				pageRoute.splice(pageRoute.length-1,1);
-				tempPage.trigger("hide");
-				tempPage=targPage;
+					$mask.css("display","none")
+					tempPage.css('display','none');
+					pageRoute.splice(pageRoute.length-1,1);
+					tempPage.trigger("hide");
+					tempPage=targPage;
+				//}catch(e){}
 			}
 		});
 	}

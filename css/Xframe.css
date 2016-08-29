@@ -7,6 +7,12 @@
 	word-break: break-word;
 	font-family:"xhkt", "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }*/
+.row{
+	margin: 0;
+}
+[class*="col-"]{
+	padding: 0;
+}
 body{
 	background-color: rgb(255,255,255);
 	overflow-x:hidden;
